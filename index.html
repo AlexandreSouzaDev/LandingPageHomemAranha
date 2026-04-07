@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spider-Man — Seu Amigão da Vizinhança</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="cursor"></div>
+<canvas id="web-canvas"></canvas>
+ 
+<!-- HERO -->
+<section class="hero">
+  <div class="hex-bg"></div>
+ 
+  <div class="spider-svg-wrap">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="115" rx="38" ry="50" fill="#e8192c"/>
+      <circle cx="100" cy="65" r="34" fill="#e8192c"/>
+      <ellipse cx="86" cy="62" rx="14" ry="16" fill="white" transform="rotate(-12 86 62)"/>
+      <ellipse cx="114" cy="62" rx="14" ry="16" fill="white" transform="rotate(12 114 62)"/>
+      <ellipse cx="87" cy="62" rx="9" ry="11" fill="#0a0a0f" transform="rotate(-12 87 62)"/>
+      <ellipse cx="113" cy="62" rx="9" ry="11" fill="#0a0a0f" transform="rotate(12 113 62)"/>
+      <line x1="100" y1="68" x2="100" y2="165" stroke="#0a0a0f" stroke-width="1.5"/>
+      <line x1="62" y1="90" x2="138" y2="90" stroke="#0a0a0f" stroke-width="1.5"/>
+      <line x1="65" y1="110" x2="135" y2="110" stroke="#0a0a0f" stroke-width="1.5"/>
+      <line x1="67" y1="130" x2="133" y2="130" stroke="#0a0a0f" stroke-width="1.5"/>
+      <line x1="70" y1="150" x2="130" y2="150" stroke="#0a0a0f" stroke-width="1.5"/>
+      <path d="M72 100 Q40 85 20 65" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M68 112 Q35 105 10 100" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M68 125 Q38 128 15 140" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M128 100 Q160 85 180 65" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M132 112 Q165 105 190 100" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M132 125 Q162 128 185 140" stroke="#0a0a0f" stroke-width="5" stroke-linecap="round"/>
+      <path d="M100 95 L94 108 L100 105 L106 108 Z" fill="#0a0a0f"/>
+      <line x1="100" y1="95" x2="88" y2="100" stroke="#0a0a0f" stroke-width="2"/>
+      <line x1="100" y1="95" x2="112" y2="100" stroke="#0a0a0f" stroke-width="2"/>
+    </svg>
+  </div>
+ 
+  <p class="hero-eyebrow">Seu amigão da vizinhança</p>
+  <h1 class="hero-title">SPIDER-<br>MAN</h1>
+  <p class="hero-sub">Com grandes poderes vêm grandes responsabilidades. Protegendo Nova York, um prédio de cada vez.</p>
+  <div class="btn-group">
+    <button class="btn btn-primary" onclick="document.querySelector('.webshooter-section').scrollIntoView({behavior:'smooth'})">Atirar teia ↓</button>
+    <button class="btn btn-secondary" onclick="document.querySelector('.powers-section').scrollIntoView({behavior:'smooth'})">Ver poderes</button>
+  </div>
+  <div class="scroll-hint">▼ role para explorar</div>
+</section>
+ 
+<!-- POWERS -->
+<div class="section powers-section">
+  <p class="section-label">Habilidades</p>
+  <h2 class="section-title">Poderes do Aranha</h2>
+  <div class="powers-grid" id="powers-grid">
+    <div class="power-card" data-pct="95">
+      <span class="power-icon">🕸️</span>
+      <div class="power-name">Lançador de Teia</div>
+      <div class="power-desc">Teia de polímero orgânico capaz de suportar 10 toneladas. Velocidade de disparo: 140 km/h.</div>
+      <div class="power-bar-wrap"><div class="power-bar"></div></div>
+    </div>
+    <div class="power-card" data-pct="88">
+      <span class="power-icon">🦎</span>
+      <div class="power-name">Escalar Paredes</div>
+      <div class="power-desc">Adesão a qualquer superfície via microfilamentos eletrostáticos. Funciona até em superfícies molhadas.</div>
+      <div class="power-bar-wrap"><div class="power-bar"></div></div>
+    </div>
+    <div class="power-card" data-pct="100">
+      <span class="power-icon">⚡</span>
+      <div class="power-name">Sentido de Aranha</div>
+      <div class="power-desc">Percepção extrassensorial de perigo com antecedência de até 3 segundos. Nunca falha.</div>
+      <div class="power-bar-wrap"><div class="power-bar"></div></div>
+    </div>
+    <div class="power-card" data-pct="82">
+      <span class="power-icon">💪</span>
+      <div class="power-name">Super Força</div>
+      <div class="power-desc">Capaz de levantar até 15 toneladas. Reflexos 40× mais rápidos que um humano normal.</div>
+      <div class="power-bar-wrap"><div class="power-bar"></div></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- WEB SHOOTER -->
+<div class="webshooter-section">
+  <canvas id="shoot-canvas"></canvas>
+  <div style="position:relative;z-index:1;text-align:center;">
+    <p class="section-label">Modo interativo</p>
+    <h2 class="section-title">Lança-Teia</h2>
+    <p style="color:#888;font-size:16px;max-width:460px;margin:0 auto;">Clique no botão abaixo ou em qualquer lugar da tela para disparar sua teia como o Homem-Aranha!</p>
+    <button id="web-shoot-btn">🕸️ ATIRAR TEIA</button>
+    <div id="shoot-msg"></div>
+  </div>
+</div>
+ 
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-text">"Com grandes poderes vêm grandes responsabilidades."</div>
+  <div class="quote-attr">— Tio Ben Parker</div>
+</div>
+ 
+<!-- FOOTER -->
+<footer class="footer">
+  SPIDER-MAN &nbsp;·&nbsp; PROTETOR DE NOVA YORK &nbsp;·&nbsp; ©2026
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>

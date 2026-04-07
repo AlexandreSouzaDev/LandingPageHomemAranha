@@ -1,0 +1,396 @@
+/* ===========================
+   RESET & BASE
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+body {
+  background: #0a0a0f;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+ 
+/* ===========================
+   CUSTOM CURSOR
+=========================== */
+#cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e8192c;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s, background 0.1s;
+  transform: translate(-50%, -50%);
+}
+ 
+#cursor.click {
+  background: #e8192c44;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+ 
+/* ===========================
+   BACKGROUND WEB CANVAS
+=========================== */
+canvas#web-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+ 
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: radial-gradient(ellipse at 50% 30%, #1a0008 0%, #0a0a0f 70%);
+  overflow: hidden;
+}
+ 
+.hex-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(60deg, transparent, transparent 28px, rgba(232,25,44,0.04) 29px, rgba(232,25,44,0.04) 30px),
+    repeating-linear-gradient(-60deg, transparent, transparent 28px, rgba(232,25,44,0.04) 29px, rgba(232,25,44,0.04) 30px);
+  z-index: 0;
+}
+ 
+.spider-svg-wrap {
+  position: relative;
+  z-index: 1;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 2rem;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px #e8192c88);
+}
+ 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+ 
+.hero-eyebrow {
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #e8192c;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.8s ease both;
+}
+ 
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 10vw, 110px);
+  line-height: 0.92;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.15s ease both;
+  background: linear-gradient(135deg, #fff 30%, #ff6b7a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+ 
+.hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  color: #aaa;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.3s ease both;
+  max-width: 480px;
+}
+ 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+ 
+/* ===========================
+   BUTTONS
+=========================== */
+.btn-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 2.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.8s 0.45s ease both;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+ 
+.btn {
+  padding: 14px 36px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: all 0.2s;
+}
+ 
+.btn-primary {
+  background: #e8192c;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #ff2a3f;
+  transform: scale(1.05);
+}
+ 
+.btn-secondary {
+  background: transparent;
+  color: #e8192c;
+  border: 2px solid #e8192c;
+}
+.btn-secondary:hover {
+  background: #e8192c18;
+  transform: scale(1.05);
+}
+ 
+/* ===========================
+   SCROLL HINT
+=========================== */
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  z-index: 2;
+  text-align: center;
+  animation: bounce 2s infinite;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #555;
+  text-transform: uppercase;
+}
+ 
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+ 
+/* ===========================
+   SHARED SECTION STYLES
+=========================== */
+.section {
+  position: relative;
+  z-index: 2;
+  padding: 6rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+ 
+.section-label {
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #e8192c;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+ 
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  background: linear-gradient(135deg, #fff 40%, #e8192c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+}
+ 
+/* ===========================
+   POWERS SECTION
+=========================== */
+.powers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+ 
+.power-card {
+  background: linear-gradient(135deg, #12050a 0%, #1a0810 100%);
+  border: 1px solid #e8192c22;
+  padding: 2rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  cursor: pointer;
+}
+ 
+.power-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #e8192c18, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+ 
+.power-card:hover {
+  border-color: #e8192c66;
+  transform: translateY(-6px);
+}
+.power-card:hover::before {
+  opacity: 1;
+}
+ 
+.power-icon {
+  font-size: 36px;
+  margin-bottom: 1rem;
+  display: block;
+}
+ 
+.power-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+ 
+.power-desc {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+}
+ 
+.power-bar-wrap {
+  margin-top: 1rem;
+  height: 3px;
+  background: #1e1e2a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+ 
+.power-bar {
+  height: 100%;
+  background: #e8192c;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.22,1,.36,1);
+  border-radius: 2px;
+}
+ 
+/* ===========================
+   WEB SHOOTER SECTION
+=========================== */
+.webshooter-section {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #0a0a0f 0%, #0f0208 50%, #0a0a0f 100%);
+  padding: 6rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+ 
+.webshooter-section .section-title {
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+ 
+#web-shoot-btn {
+  background: #e8192c;
+  color: #fff;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  border: none;
+  padding: 18px 48px;
+  cursor: pointer;
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  transition: all 0.2s;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+#web-shoot-btn:hover  { background: #ff2a3f; transform: scale(1.05); }
+#web-shoot-btn:active { transform: scale(0.97); }
+ 
+#shoot-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+ 
+#shoot-msg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: #e8192c;
+  margin-top: 1.5rem;
+  min-height: 40px;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+#shoot-msg.show { opacity: 1; }
+ 
+/* ===========================
+   QUOTE SECTION
+=========================== */
+.quote-section {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 5rem 2rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+ 
+.quote-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1.15;
+  background: linear-gradient(135deg, #e8192c, #fff 60%, #e8192c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+ 
+.quote-attr {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+ 
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #e8192c1a;
+  padding: 2rem;
+  text-align: center;
+  font-size: 13px;
+  color: #444;
+  letter-spacing: 2px;
+}
