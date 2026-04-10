@@ -8,10 +8,6 @@ document.addEventListener('mousemove', e => {
 document.addEventListener('mousedown', () => cursor.classList.add('click'));
 document.addEventListener('mouseup',   () => cursor.classList.remove('click'));
  
- 
-/* ===========================
-   BACKGROUND WEB CANVAS
-=========================== */
 const bgCanvas = document.getElementById('web-canvas');
 const bgCtx    = bgCanvas.getContext('2d');
 let nodes = [];
@@ -85,9 +81,6 @@ function drawBgWeb() {
 drawBgWeb();
  
  
-/* ===========================
-   WEB SHOOTER
-=========================== */
 const shootCanvas = document.getElementById('shoot-canvas');
 const sCtx        = shootCanvas.getContext('2d');
 const shootMsg    = document.getElementById('shoot-msg');
@@ -190,9 +183,6 @@ function drawWebs() {
 drawWebs();
  
  
-/* ===========================
-   POWER BARS (scroll-triggered)
-=========================== */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
