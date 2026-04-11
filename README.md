@@ -2,9 +2,9 @@
 # 🕷️ Landing Page — Homem-Aranha
 LINK DO SITE https://alexandresouzadev.github.io/LandingPageHomemAranha/
 
-<img width="1877" height="994" alt="Captura de tela 2026-04-11 141000" src="https://github.com/user-attachments/assets/0cfc0259-71eb-48e3-bc59-fa783820cda4" />
-<img width="1872" height="751" alt="Captura de tela 2026-04-11 140951" src="https://github.com/user-attachments/assets/83c97726-b2f7-4885-85c1-8465c00dc527" />
 <img width="1885" height="973" alt="Captura de tela 2026-04-11 140942" src="https://github.com/user-attachments/assets/1a25e61a-73ff-484b-a628-dcc458abde22" />
+<img width="1872" height="751" alt="Captura de tela 2026-04-11 140951" src="https://github.com/user-attachments/assets/83c97726-b2f7-4885-85c1-8465c00dc527" />
+<img width="1877" height="994" alt="Captura de tela 2026-04-11 141000" src="https://github.com/user-attachments/assets/0cfc0259-71eb-48e3-bc59-fa783820cda4" />
 
 ## 📋 Sobre o Projeto!
 
